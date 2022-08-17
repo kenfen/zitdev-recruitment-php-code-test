@@ -10,15 +10,19 @@
 namespace Test\App;
 
 use PHPUnit\Framework\TestCase;
+use App\App\Demo;
+use App\Util\HttpRequest;
+use App\Service\AppLogger;
 
 
-class DemoTest extends TestCase {
+class DemoTest extends TestCase 
+{
 
-    public function test_foo() {
-
-    }
-
-    public function test_get_user_info() {
-
+    public function testUserInfo() 
+    {
+        $curl = new HttpRequest;
+        $logger = new AppLogger;
+        $userInfo = (new Demo($logger,$curl))->get_user_info();
+        $this->assertEquals(1,  $userInfo['id']);
     }
 }

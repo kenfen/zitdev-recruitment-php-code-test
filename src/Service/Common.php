@@ -75,6 +75,10 @@ class Common
         }
     }
 
+    /**
+     *  Thrift属于远程调用比较耗时。缓存没有时，优先根据merchant_id获取商家坐标，没有才进行远程调用并正确结果保存到商家坐标和缓存。
+     * */ 
+
     // 回调状态过滤
     public static function checkStatusCallback($order_id, $status)
     {
@@ -92,4 +96,8 @@ class Common
         $open_status_arr = ['901' => 1, '902' => 2, '903' => 3];
         return $order_id.'-'.$open_status_arr[$status];
     }
+
+    /**
+     * 1、返回值混乱；2、使用switch
+     *  */ 
 }
